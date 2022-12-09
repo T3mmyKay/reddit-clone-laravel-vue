@@ -6,19 +6,21 @@ import TextInput from "@/Components/TextInput.vue";
 import InputError from "@/Components/InputError.vue";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
 
-
+const props = defineProps({
+    community: Object,
+})
 const form = useForm({
-    name: '',
-    description: '',
-    slug: '',
+    name: props.community.name,
+    description: props.community.description,
+    slug: props.community.slug,
 });
 const submit = () => {
-    form.post(route('communities.store'));
+    form.put(route('communities.update', props.community.id));
 }
 </script>
 
 <template>
-    <Head title="Communities || Create"/>
+    <Head title="Communities || Edit"/>
 
     <AuthenticatedLayout>
         <template #header>
@@ -57,7 +59,7 @@ const submit = () => {
                         <div class="flex items-center justify-end mt-4">
                             <PrimaryButton class="ml-4" :class="{ 'opacity-25': form.processing }"
                                            :disabled="form.processing">
-                                Store
+                                Update
                             </PrimaryButton>
                         </div>
                     </form>

@@ -6,12 +6,19 @@ import DropdownLink from '@/Components/DropdownLink.vue';
 import NavLink from '@/Components/NavLink.vue';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
 import {Link} from '@inertiajs/inertia-vue3';
+import AlertCom from "@/Components/AlertCom.vue";
 
 const showingNavigationDropdown = ref(false);
 </script>
 
 <template>
     <div>
+        <Transition enter-from-class="translate-x-[150%] opacity-0"
+                    leave-to-class="translate-x-[150%] opacity-0"
+                    enter-active-class="transition duration-300"
+                    leave-active-class="transition duration-300">
+            <AlertCom v-if="$page.props.flash.message"/>
+        </Transition>
         <div class="min-h-screen bg-gray-100">
             <nav class="bg-white border-b border-gray-100">
                 <!-- Primary Navigation Menu -->

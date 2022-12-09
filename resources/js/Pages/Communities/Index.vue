@@ -1,6 +1,7 @@
 <script setup>
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import {Head, Link} from "@inertiajs/inertia-vue3";
+import PaginationCom from "@/Components/PaginationCom.vue";
 
 defineProps({
     communities: Object,
@@ -52,7 +53,7 @@ defineProps({
                                         </tr>
                                         </thead>
                                         <tbody class="divide-y divide-gray-200 bg-white">
-                                        <tr v-for="community in communities" :key="community.id">
+                                        <tr v-for="community in communities.data" :key="community.id">
                                             <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
                                                 <Link :href="route('communities.show', community.slug)"
                                                       class="text-blue-500 hover:text-blue-700 font-semibold">
@@ -63,11 +64,11 @@ defineProps({
                                                 {{ community.slug }}
                                             </td>
                                             <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                                                <Link :href="route('communities.edit', community.slug)"
+                                                <Link :href="route('communities.edit', community.id)"
                                                       class="text-indigo-600 hover:text-indigo-900 mr-3">Edit
                                                 </Link>
                                                 <Link
-                                                    :href="route('communities.destroy', community.slug)"
+                                                    :href="route('communities.destroy', community.id)"
                                                     class="text-red-600 hover:text-red-900" method="delete"
                                                     as="button"
                                                     type="button">Delete
@@ -76,6 +77,9 @@ defineProps({
                                         </tr>
                                         </tbody>
                                     </table>
+                                    <div class="p-2 m-2 border-t-2 border-t-accent-slate-700">
+                                        <PaginationCom :links="communities.links"/>
+                                    </div>
                                 </div>
                             </div>
                         </div>
