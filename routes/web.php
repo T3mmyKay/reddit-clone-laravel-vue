@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Backend\CommunityController;
+use App\Http\Controllers\Frontend\SubredditController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -28,7 +29,8 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     })->middleware(['auth', 'verified'])->name('dashboard');
 
 
-    Route::resource('communities', CommunityController::class);
+    Route::resource('dashboard/communities', CommunityController::class);
 });
 
+Route::get('/r/{slug}', [SubredditController::class, 'show'])->name('subreddit.show');
 require __DIR__ . '/auth.php';
