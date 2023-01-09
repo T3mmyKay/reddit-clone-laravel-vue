@@ -35,5 +35,5 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::resource('/dashboard/communities.post', CommunityPostController::class);
 });
 
-Route::get('/r/{slug}', [FrontendCommunityController::class, 'show'])->name('subreddit.show');
+Route::get('/r/{slug}', [FrontendCommunityController::class, 'show'])->name('frontend.communities.show');
 require __DIR__ . '/auth.php';
