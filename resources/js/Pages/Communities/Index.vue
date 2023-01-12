@@ -1,6 +1,6 @@
 <script setup>
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
-import {Head, Link} from "@inertiajs/inertia-vue3";
+import { Head, Link } from "@inertiajs/inertia-vue3";
 import PaginationCom from "@/Components/PaginationCom.vue";
 
 defineProps({
@@ -70,8 +70,7 @@ defineProps({
                                                 <Link
                                                     :href="route('communities.destroy', community.id)"
                                                     class="text-red-600 hover:text-red-900" method="delete"
-                                                    as="button"
-                                                    type="button">Delete
+                                                    as="button" type="button">Delete
                                                 </Link>
                                             </td>
                                         </tr>

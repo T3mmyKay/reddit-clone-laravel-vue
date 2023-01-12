@@ -30,7 +30,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     })->middleware(['auth', 'verified'])->name('dashboard');
 
 
-    Route::resource('dashboard/communities', CommunityController::class);
+    Route::resource( 'dashboard/communities', CommunityController::class);
 
     Route::resource('/dashboard/communities.post', CommunityPostController::class);
 });

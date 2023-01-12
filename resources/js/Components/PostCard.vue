@@ -6,7 +6,7 @@ const props = defineProps({
 </script>
 
 <template>
-    <div class="p-6 max-w-4xl bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800">
+    <div class="p-6 mt-4 max-w-4xl bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 mb-3">
         <div class="mr-3">upvote</div>
         <div class="flex m-2 p-2">
             <span class="font-semibold mr-3">r/{{ community }}</span>
