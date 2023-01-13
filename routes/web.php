@@ -3,6 +3,7 @@
 use App\Http\Controllers\Backend\CommunityController;
 use App\Http\Controllers\Backend\CommunityPostController;
 use App\Http\Controllers\Frontend\CommunityController as FrontendCommunityController;
+use App\Http\Controllers\Frontend\PostController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -30,10 +31,11 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     })->middleware(['auth', 'verified'])->name('dashboard');
 
 
-    Route::resource( 'dashboard/communities', CommunityController::class);
+    Route::resource('dashboard/communities', CommunityController::class);
 
     Route::resource('/dashboard/communities.post', CommunityPostController::class);
 });
 
 Route::get('/r/{slug}', [FrontendCommunityController::class, 'show'])->name('frontend.communities.show');
+Route::get('r/{community_slug}/posts/{post:slug}', [PostController::class, 'show'])->name('frontend.communities.posts.show');
 require __DIR__ . '/auth.php';

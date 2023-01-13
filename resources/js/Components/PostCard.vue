@@ -1,4 +1,6 @@
 <script setup>
+import { Link } from "@inertiajs/inertia-vue3";
+
 const props = defineProps({
     post: Object,
     community: String,
@@ -19,13 +21,15 @@ const props = defineProps({
         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ post.description }}</p>
         <div class="flex m-2 p-2">
             <p class="mr-4 p-2">Comments(2)</p>
-            <a href="#" class="inline-flex items-center py-2 px-3 text-sm bg-blue-600 hover:bg-blue-500 rounded-md font-medium text-center text-white">Read more
+            <Link :href="route('frontend.communities.posts.show',[community,post.slug ])"
+                  class="inline-flex items-center py-2 px-3 text-sm bg-blue-600 hover:bg-blue-500 rounded-md font-medium text-center text-white">
+                Read more
                 <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20"
                      stroke-width="1.5" stroke="currentColor" class="ml-2 -mr-1 w-4 h-4">
                     <path stroke-linecap="round" stroke-linejoin="round"
                           d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"/>
                 </svg>
-            </a>
+            </Link>
         </div>
     </div>
 </template>

@@ -7,12 +7,9 @@ import PaginationCom from "@/Components/PaginationCom.vue";
 
 const props = defineProps({
     community: Object,
-    posts: Object,
+    post: Object,
 })
 
-onMounted(() => {
-    console.log(props.posts);
-})
 </script>
 
 <template>
@@ -28,10 +25,8 @@ onMounted(() => {
         </template>
         <section class="flex md:flex-row m-2 p-2 items">
             <div class="w-8/12">
-                <PostCard v-for="post in posts.data" :key="post.id" :community="community.name" :post="post"/>
-                <div class="mt-4 p-2">
-                    <PaginationCom :links="posts.meta.links"/>
-                </div>
+                <h1>{{post.title}}</h1>
+                Post Details
             </div>
 
             <div class="w-4/12">
